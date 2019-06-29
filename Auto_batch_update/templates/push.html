@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>本地 push</title>
+</head>
+<!--<script type="text/javascript" src="{{ url_for('static', filename='js/port.js') }}"></script>
+
+-->
+<body>
+  <form action="/push" method="POST">
+        <p>
+            默认我们屏蔽了　不在线的，　测试机　　这三个类型。
+        </p>
+        <p>
+                选包: <select name="deb_xargs" id="deb_xargs" >
+                        {%for deb in deb_list%}
+                        <option value={{deb}}>{{deb}}</option>
+                        {%endfor%}
+                   </select>
+
+            是否推包：<input id="no_push-3" type="radio" name="not_or_yes" value=Flase checked="checked" />否<input id="yes_push-3" type="radio" name="not_or_yes" value=True />是
+        </p> 
+         <input type="submit" value="点击就推包了" />
+ 
+        </p>
+    </form>
+</hr>
+
+
+
+</body>
+</html>
