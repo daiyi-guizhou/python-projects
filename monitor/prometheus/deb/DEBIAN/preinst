@@ -1,0 +1,12 @@
+#!/bin/bash
+if [[ `ps ax | grep -i 'open-falcon' |wc -l` == 2 ]] || [[ `ps ax | grep -i 'open-falcon' | awk -F " " '{print $7}'|head -n 1` == "/home/work/open-falcon//agent/config/cfg.json" ]];then
+	echo "ok,i see, open-falcon/ is currently running! so stop it"
+	systemctl stop daiyi-falcon-agent.service
+	systemctl disable daiyi-falcon-agent.service || echo "donot worry,  it is ok."
+else
+	echo "no ,this is nothing."
+fi
+
+rm -rf /home/work/open-falcon/ || echo "donot worry,  it is ok."
+rm -rf /lib/systemd/system/daiyi-falcon-agent.service || echo "donot worry,  it is ok."
+systemctl stop daiyi-agentCore.service || echo "nothing to stop"

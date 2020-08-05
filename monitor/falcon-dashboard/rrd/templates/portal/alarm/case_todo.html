@@ -1,0 +1,11 @@
+
+    {%for case in new_case%}
+            {{case.endpoint}} ,
+    {%endfor%}
+    
+<script>
+        // Reload page for every X minutes.
+        setInterval(function() {
+           location.reload();
+        }, 3 * 60 *1000);
+</script>
