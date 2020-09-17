@@ -123,7 +123,7 @@ class LocalOverwrite():
     def expect_excute_cmd(self, ops_passwd_cmd, ops_ssh_cmd_end,
                           ops_ssh_cmd_end_dirs_list, expect_rm_files_cmd,
                           ops_ssh_cmd_front, ops_work_dir):
-        # mian_cmd
+        # sword_cmd
         _scp_overwrite_cmd = "'spawn scp  -P %s ./execute_overwrite.sh %s@%s:%s " % (
             self.ops_port, self.ops_user, self.ops_host, ops_work_dir)
         expect_cmd_scp_overwrite = "expect -c %s%s" % (_scp_overwrite_cmd,
