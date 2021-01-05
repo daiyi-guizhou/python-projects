@@ -1,0 +1,5 @@
+redis
+flask-cors
+flask
+pyjwt
+pymysql
