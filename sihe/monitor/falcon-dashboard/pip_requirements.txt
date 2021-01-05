@@ -4,6 +4,6 @@ Jinja2==2.7.2
 Werkzeug==0.9.4
 gunicorn==19.9.0
 python-dateutil==2.2
-requests==2.3.0
+requests==2.20.0
 mysql-python
 python-ldap
