@@ -50,7 +50,7 @@ DEBUG_FLAG = False
 if __name__ == "__main__":
     # exec_cmd("cp -fr new ./to_diff_dir/")
     # exec_cmd("cp -fr old ./to_diff_dir/")
-    head_dir = "diff_jar"
-    local_public_path = "diff_jar/old_jar"
-    local_apsara_path = "diff_jar/new_jar"
+    head_dir = "diff_dir"
+    local_public_path = "diff_dir/overwrite"
+    local_apsara_path = "diff_dir/overwrite_old"
     _main_diff(head_dir, local_public_path, local_apsara_path)

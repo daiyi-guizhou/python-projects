@@ -34,7 +34,7 @@ def before_request():
     return
 
 
-def jwt_decode(auth=["GET", "POST", "UPDATE"],response="set jwt sucess"):
+def    (auth=["GET", "POST", "UPDATE"],response="set jwt sucess"):
     payload = {  # jwt设置过期时间的本质 就是在payload中 设置exp字段, 值要求为格林尼治时间
         "user_id": request.args.get("user_id"),
         "authentication": auth,

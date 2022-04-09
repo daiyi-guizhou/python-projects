@@ -36,6 +36,8 @@ def subtraction_list(first, second):
 def get_file_dir_list(ane_dir):
     a_dir_file_list = []
     a_dir_dir_list = []
+    print('######### ',ane_dir)
+    # ane_dir = "./diff_dir/interview_old/"
     a_dir_list = os.listdir(ane_dir)
     for i in a_dir_list:
         j = os.path.join(ane_dir, i)
@@ -101,6 +103,7 @@ def diff_content(common_file_list):
         for i in common_file_list:
             assert i[0] and i[1], "this is error,dont exist the same file_name"
             diff_cmd = "diff -Bbu %s %s" % (str(i[0]), str(i[1]))
+            # diff_cmd = "diff  %s %s" % (str(i[0]), str(i[1]))
             _, stdout, _ = exec_cmd(diff_cmd, throw=False)
             if stdout:
                 sums_same_filename.append(i)
@@ -116,13 +119,16 @@ def write_dict_into_file(dict_name, file_name):
 def save_diff(sums_same_filename, service_path, save_path):
     save_path_src = os.path.join(save_path, "src")
     if not os.path.exists(save_path_src):
-        exec_cmd("mkdir -p %s" % save_path_src)
+        # exec_cmd("mkdir -p %s" % save_path_src)
+        exec_cmd("mkdir %s" % save_path_src)
     save_path_src = save_path_src + '/'
     for i in [os.path.join(service_path, i) for i in["unilateral_dirs", "unilateral_files", "common_file_list", "sums_same_filename"]]:
         exec_cmd("mv %s %s" % (i, save_path_src))
     diff_contents_same_filename = save_path_src + "diff_contents_same_filename"
     if not os.path.exists(diff_contents_same_filename):
-        exec_cmd("mkdir %s" % diff_contents_same_filename)
+        new_path = diff_contents_same_filename.replace('\\','/')
+        print("#### ",diff_contents_same_filename,"    ** ",new_path)
+        exec_cmd("mkdir %s" % new_path)
     for i in sums_same_filename:
         assert i[0] and i[1], "this is error,dont exist the same file_name"
         diff_cmd = "diff -Bbu %s %s" % (str(i[0]), str(i[1]))
@@ -183,3 +189,11 @@ def diff_new_and_already(new_path, already_path):
                            already_path_file_content, i, new_path_fixed_file_content)
         else:
             write_file(new_path_src, already_path, i, new_path_fixed)
+
+"""
+饶毅教授举报裴钢院士学术不端后，网络上引起了激烈的讨论。众多网友一边倒的声援饶毅教授。就事件本质而言，我们应该遵循真理，可中科院对于事件的回复过于简单。并未提及实验本身是否可重复的问题。也没有说明裴钢院士的实验数据真实有效。仅仅用不在调查难以服众。也不具备科学性。希望中科院能公布详细的调查过程。谢谢。   如果裴钢院士的实验是没有问题的，那不用怕，真金不怕火炼嘛。
+
+中国科学院学部科学道德建设委员会
+
+关于饶毅教授举报裴钢院士学术不端
+"""
